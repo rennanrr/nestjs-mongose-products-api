@@ -24,8 +24,8 @@ export class ProductsController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() productAtualizado: Product): Promise<Product> {
-    return this.productsService.update(id, productAtualizado);
+  async update(@Param('id') id: string, @Body() productUpdated: Product): Promise<Product> {
+    return this.productsService.update(id, productUpdated);
   }
 
   @Delete(':id')
