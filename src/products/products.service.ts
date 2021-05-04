@@ -7,29 +7,28 @@ import { Product } from './product';
 export class ProductsService {
   constructor(
     @InjectModel(Product.name) private productModel: Model<Product>
-  ) {}
+  ) { }
 
-  async listarTodos(): Promise<Product[]> {
+  async listAll(): Promise<Product[]> {
     return this.productModel.find().exec();
   }
 
-  async criar(product: Product): Promise<Product> {
-    const productCriado = new this.productModel(product);
-
-    return productCriado.save();
+  async create(product: Product): Promise<Product> {
+    const created = new this.productModel(product);
+    return created.save();
   }
 
-  async buscarPorId(id: string): Promise<Product> {
+  async findById(id: string): Promise<Product> {
     return this.productModel.findById(id).exec();
   }
 
-  async atualizar(id: string, product: Product): Promise<Product> {
+  async update(id: string, product: Product): Promise<Product> {
     return this.productModel.findByIdAndUpdate(id, product).exec();
   }
 
-  async remover(id: string) {
-    const productApagado = this.productModel.findOneAndDelete({ _id: id }).exec();
+  async remove(id: string) {
+    const deleted = this.productModel.findOneAndDelete({ _id: id }).exec();
 
-    return (await productApagado).remove();
+    return (await deleted).remove();
   }
 }

@@ -6,31 +6,31 @@ import { ProductsService } from './products.service';
 export class ProductsController {
   constructor(
     private readonly productsService: ProductsService
-  ) {}
+  ) { }
 
   @Get()
-  async listarTodos(): Promise<Product[]> {
-    return this.productsService.listarTodos();
+  async listAll(): Promise<Product[]> {
+    return this.productsService.listAll();
   }
 
   @Post()
-  async criar(@Body() product: Product): Promise<Product> {
-    return this.productsService.criar(product);
+  async create(@Body() product: Product): Promise<Product> {
+    return this.productsService.create(product);
   }
 
   @Get(':id')
-  async buscarPorId(@Param('id') id: string): Promise<Product> {
-    return this.productsService.buscarPorId(id);
+  async findById(@Param('id') id: string): Promise<Product> {
+    return this.productsService.findById(id);
   }
 
   @Put(':id')
-  async atualizar(@Param('id') id: string, @Body() productAtualizado: Product): Promise<Product> {
-    return this.productsService.atualizar(id, productAtualizado);
+  async update(@Param('id') id: string, @Body() productAtualizado: Product): Promise<Product> {
+    return this.productsService.update(id, productAtualizado);
   }
 
   @Delete(':id')
-  async remover(@Param('id') id: string): Promise<Product> {
-    return this.productsService.remover(id);
+  async remove(@Param('id') id: string): Promise<Product> {
+    return this.productsService.remove(id);
   }
 
 }
